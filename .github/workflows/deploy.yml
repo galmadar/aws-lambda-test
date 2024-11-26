@@ -3,7 +3,7 @@ name: Deploy Lambda Function
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   deploy:
@@ -21,10 +21,10 @@ jobs:
         aws-region: eu-west-1
 
     - name: Build Docker Image
-      run: docker build -t my-lambda .
+      run: docker build -t aws-lambda-test .
 
     - name: Tag Docker Image
-      run: docker tag my-lambda:latest ${{ steps.login-ecr.outputs.registry }}/my-lambda:latest
+      run: docker tag aws-lambda-test:latest ${{ steps.login-ecr.outputs.registry }}/aws-lambda-test:latest
 
     - name: Push Docker Image to ECR
-      run: docker push ${{ steps.login-ecr.outputs.registry }}/my-lambda:latest
+      run: docker push ${{ steps.login-ecr.outputs.registry }}/aws-lambda-test:latest
