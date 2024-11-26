@@ -18,7 +18,7 @@ jobs:
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: [your-aws-region]
+        aws-region: eu-west-1
 
     - name: Build Docker Image
       run: docker build -t my-lambda .
