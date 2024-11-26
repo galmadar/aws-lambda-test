@@ -1,9 +1,10 @@
 import sys
+
+
 def handler(event, context):
-    print("a")
-    print(event)
-    print("a")
-    print("b")
-    print(context)
-    print("b")
+    print({"event": event, "context": context})
     return 'Hello from AWS Lambda using Python' + sys.version + '!'
+
+    
+if __name__ == '__main__':
+    handler({"hello":2}, {"content":"hello"})
