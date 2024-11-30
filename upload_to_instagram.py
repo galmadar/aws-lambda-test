@@ -12,12 +12,14 @@ load_dotenv()
 def get_env_variable(variable_name):
     value = os.getenv(variable_name)
     if value is None:
-        print(f"Warning: {variable_name} not found in .env file.")
+        print(f"Warning: {variable_name} not found.")
     return value
 
 
 username = get_env_variable("USERNAME")
 password = get_env_variable("PASSWORD")
+
+print({"fromdotenv": "hi", "username": username, "password": password})
 
 cl = Client()
 cl.login(username, password)
