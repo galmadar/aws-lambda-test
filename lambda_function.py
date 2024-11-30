@@ -1,5 +1,5 @@
 import sys
-from upload_to_instagram import download_photo
+from http_to_files import download_photo
 
 
 def handler(event, context):
