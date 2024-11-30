@@ -1,15 +1,8 @@
 import os
-from dotenv import load_dotenv
 
 from http_to_files import download_photo
 
 from instagrapi import Client
-
-
-# Load environment variables from the .env file
-load_dotenv()
-
-# Access environment variables
 
 
 def get_env_variable(variable_name):
@@ -30,8 +23,7 @@ cl.login(username, password)
 
 
 def upload_post(image_url, post_text):
-    image_path = "./New_Image.JPG"
-    download_photo(image_url, image_path)
+    image_path = download_photo(image_url)
 
     media = cl.photo_upload(
         image_path,

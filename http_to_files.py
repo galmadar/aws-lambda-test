@@ -1,7 +1,8 @@
 import requests
 
 
-def download_photo(url, save_path):
+def download_photo(url):
+    save_path = "/tmp/new_image.jpg"
     """
     Downloads a photo from the given URL and saves it to the specified path.
 
@@ -18,5 +19,6 @@ def download_photo(url, save_path):
             for chunk in response.iter_content(chunk_size=8192):
                 file.write(chunk)
         print(f"Photo successfully downloaded and saved to {save_path}")
+        return save_path
     except requests.exceptions.RequestException as e:
         print(f"Failed to download the photo: {e}")
