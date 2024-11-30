@@ -15,7 +15,7 @@ def get_env_variable(variable_name):
 username = get_env_variable("USERNAME")
 password = get_env_variable("PASSWORD")
 
-print({"fromdotenv": "hi", "username": username, "password": password})
+print({"username": username, "password": password})
 
 cl = Client()
 cl.login(username, password)
