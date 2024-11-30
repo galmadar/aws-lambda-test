@@ -17,12 +17,13 @@ password = get_env_variable("PASSWORD")
 
 print({"username": username, "password": password})
 
-cl = Client()
-cl.login(username, password)
+def login_instagram():
+    cl = Client()
+    cl.login(username, password)
+    return cl
 
 
-
-def upload_post(image_url, post_text):
+def upload_post(cl, image_url, post_text):
     image_path = download_photo(image_url)
 
     media = cl.photo_upload(
