@@ -15,25 +15,35 @@ def handler(event, context):
 
     
     body = event.get('body')
+
     if not body:
         raise ValueError("Request body is missing.")
 
-    # Assume the body is JSON and parse it
-    body_json = json.loads(body)
-
+    print(body)
     # Extract the 'Generated Post' argument
-    generated_post = body_json.get('Generated Post')
+    body = json.loads(body)
+    
+    generated_post = body.get('Generated Post')
+    # print(generated_post)
     if generated_post is None:
         raise ValueError("'Generated Post' argument is missing.")
+
+        
+    ai_creation_url = body.get("AI Creation")
+    ai_creation_url = ai_creation_url[0]
+    ai_creation_url = ai_creation_url.get("thumbnails").get("full").get("url")
+    print(ai_creation_url)
+    if ai_creation_url is None:
+        raise ValueError("'AI Creation' argument is missing.")
     
     # save_path = download_photo(image_url)
     # print(f"image saved in {save_path}")
 
     print(generated_post)
 
-    # print("about to upload post!")
-    # cl = login_instagram()
-    # upload_post(cl, image_url, generated_post)
+    print("about to upload post!")
+    cl = login_instagram()
+    upload_post(cl, ai_creation_url, generated_post)
 
     return 'Hello from AWS Lambda using Python' + sys.version + '!'
 
