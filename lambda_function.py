@@ -24,7 +24,6 @@ def handler(event, context):
     body = json.loads(body)
     
     generated_post = body.get('Generated Post')
-    # print(generated_post)
     if generated_post is None:
         raise ValueError("'Generated Post' argument is missing.")
 
@@ -39,11 +38,9 @@ def handler(event, context):
     # save_path = download_photo(image_url)
     # print(f"image saved in {save_path}")
 
-    print(generated_post)
-
     print("about to upload post!")
-    # cl = login_instagram()
-    # upload_post(cl, ai_creation_url, generated_post)
+    cl = login_instagram()
+    upload_post(cl, ai_creation_url, generated_post)
 
     return 'Hello from AWS Lambda using Python' + sys.version + '!'
 
