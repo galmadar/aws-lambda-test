@@ -42,8 +42,8 @@ def handler(event, context):
     print(generated_post)
 
     print("about to upload post!")
-    cl = login_instagram()
-    upload_post(cl, ai_creation_url, generated_post)
+    # cl = login_instagram()
+    # upload_post(cl, ai_creation_url, generated_post)
 
     return 'Hello from AWS Lambda using Python' + sys.version + '!'
 
