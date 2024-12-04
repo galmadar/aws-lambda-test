@@ -11,7 +11,6 @@ def handler(event, context):
     print({"event": event, "context": context})
 
     body = event.get('body')
-    body = event.get('body')
 
     if not body:
         raise ValueError("Request body is missing.")
